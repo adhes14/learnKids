@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Math Fun for Kids!</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div id="app" class="card">
+      <!-- Welcome/Setup Screen -->
+      <div id="setup-screen" class="screen active">
+        <h1>Math Fun! 🎨</h1>
+        <div class="form-group">
+          <label for="operation">Choose Operation:</label>
+          <select id="operation">
+            <option value="addition">Addition (+)</option>
+            <option value="subtraction">Subtraction (-)</option>
+            <option value="multiplication">Multiplication (×)</option>
+            <option value="division">Division (÷)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="count">How many questions?</label>
+          <input type="number" id="count" value="10" min="1" max="50">
+        </div>
+        <div class="form-group">
+          <label for="digits">How many digits?</label>
+          <input type="number" id="digits" value="1" min="1" max="5">
+        </div>
+        <button id="start-btn" class="btn-primary">Let's Play! 🚀</button>
+        <button id="view-history-btn" class="btn-secondary">View History 📜</button>
+      </div>
+
+      <!-- Quiz Screen -->
+      <div id="quiz-screen" class="screen">
+        <h2 id="current-step">Question 1 of 10</h2>
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <div class="exercise-container">
+          <div id="question-text" class="question">12 + 5 = ?</div>
+          <input type="number" id="answer-input" class="answer-input" autofocus placeholder="?">
+          <button id="next-btn" class="btn-primary">Next! →</button>
+        </div>
+      </div>
+
+      <!-- Results Screen -->
+      <div id="results-screen" class="screen">
+        <h1>Great Job! 🎉</h1>
+        <div id="score-summary" style="font-size: 2rem; text-align: center; margin-bottom: 20px;">
+          You got 8/10!
+        </div>
+        <div id="results-details" style="margin-bottom: 30px;">
+          <!-- Items will be injected here -->
+        </div>
+        <button id="play-again-btn" class="btn-primary">Play Again! 🔄</button>
+        <button id="home-btn" class="btn-secondary">Back Home 🏠</button>
+      </div>
+
+      <!-- History Screen -->
+      <div id="history-screen" class="screen">
+        <h1>Your History 🏆</h1>
+        <div id="history-list" class="history-list">
+          <!-- History items -->
+        </div>
+        <button id="clear-history-btn" class="btn-accent" style="margin-top: 20px;">Clear All History 🗑️</button>
+        <button id="history-home-btn" class="btn-secondary" style="margin-top: 10px;">Back Home 🏠</button>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
