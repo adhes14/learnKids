@@ -14,7 +14,15 @@
     <!-- Onboarding Screen -->
     <div id="onboarding-screen" class="screen">
       <h1>Welcome! 🌟</h1>
-      <p style="text-align: center; margin-bottom: 20px;">What is your name, little genius?</p>
+      
+      <div id="existing-users-section" style="display: none; width: 100%; margin-bottom: 20px;">
+        <p style="text-align: center; margin-bottom: 10px;">Who is playing today?</p>
+        <div id="users-list-container" style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 20px;">
+          <!-- User buttons will be injected here -->
+        </div>
+        <p style="text-align: center; font-size: 0.9rem; color: #666;">...or enter a new name:</p>
+      </div>
+
       <div class="form-group">
         <input type="text" id="user-name-input" placeholder="Your name here..." autofocus>
       </div>
@@ -23,7 +31,10 @@
 
     <!-- Welcome/Setup Screen -->
     <div id="setup-screen" class="screen">
-      <h1 id="welcome-title">Math Fun! 🎨</h1>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h1 id="welcome-title" style="margin: 0;">Math Fun! 🎨</h1>
+        <button id="switch-user-btn" class="btn-secondary" style="padding: 8px 15px; font-size: 0.9rem;">Change User 👤</button>
+      </div>
       <div class="form-group">
         <label for="operation">Choose Operation:</label>
         <select id="operation">

@@ -1,5 +1,5 @@
 import { generateQuiz } from './src/math.js';
-import { saveResult, getHistory, clearHistory, saveUserName, getUserName } from './src/storage.js';
+import { saveResult, getHistory, clearHistory, saveUserName, getUserName, getUsersList } from './src/storage.js';
 
 // State
 let currentQuiz = [];
@@ -19,11 +19,14 @@ const screens = {
 // Onboarding Elements
 const userNameInput = document.getElementById('user-name-input');
 const saveUserBtn = document.getElementById('save-user-btn');
+const existingUsersSection = document.getElementById('existing-users-section');
+const usersListContainer = document.getElementById('users-list-container');
 const welcomeTitle = document.getElementById('welcome-title');
 
 // Setup Screen Elements
 const startBtn = document.getElementById('start-btn');
 const viewHistoryBtn = document.getElementById('view-history-btn');
+const switchUserBtn = document.getElementById('switch-user-btn');
 const opSelect = document.getElementById('operation');
 const countInput = document.getElementById('count');
 const digits1Input = document.getElementById('digits1');
@@ -63,8 +66,35 @@ function init() {
         welcomeTitle.innerText = `Welcome, ${name}! 🎨`;
         showScreen('setup');
     } else {
-        showScreen('onboarding');
+        showOnboarding();
     }
+}
+
+function showOnboarding() {
+    const users = getUsersList();
+    if (users.length > 0) {
+        existingUsersSection.style.display = 'block';
+        usersListContainer.innerHTML = users.map(user => `
+            <button class="btn-secondary user-chip" data-user="${user}">${user}</button>
+        `).join('');
+
+        // Add listeners to chips
+        document.querySelectorAll('.user-chip').forEach(btn => {
+            btn.addEventListener('click', () => {
+                selectUser(btn.dataset.user);
+            });
+        });
+    } else {
+        existingUsersSection.style.display = 'none';
+    }
+    userNameInput.value = '';
+    showScreen('onboarding');
+}
+
+function selectUser(name) {
+    saveUserName(name);
+    welcomeTitle.innerText = `Welcome, ${name}! 🎨`;
+    showScreen('setup');
 }
 
 function startQuiz() {
@@ -177,12 +207,14 @@ function showHistory() {
 saveUserBtn.addEventListener('click', () => {
     const name = userNameInput.value.trim();
     if (name) {
-        saveUserName(name);
-        welcomeTitle.innerText = `Welcome, ${name}! 🎨`;
-        showScreen('setup');
+        selectUser(name);
     } else {
         alert('Please enter your name!');
     }
+});
+
+switchUserBtn.addEventListener('click', () => {
+    showOnboarding();
 });
 
 startBtn.addEventListener('click', startQuiz);
