@@ -175,3 +175,24 @@ input:focus { border-color: var(--secondary); }
   border-radius: 15px;
   margin-bottom: 15px;
 }
+/* Footer Credit */
+.footer-credit {
+  position: fixed;
+  bottom: 15px;
+  left: 20px;
+  font-size: 0.85rem;
+  color: #999;
+  font-family: 'Quicksand', sans-serif;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.footer-credit strong {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.footer-credit:hover {
+  color: var(--secondary);
+  transform: scale(1.05);
+}
