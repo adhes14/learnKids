@@ -196,3 +196,27 @@ input:focus { border-color: var(--secondary); }
   color: var(--secondary);
   transform: scale(1.05);
 }
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .card {
+    padding: 25px;
+  }
+
+  .footer-credit {
+    position: static;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 30px;
+    width: 100%;
+  }
+  
+  .footer-credit:hover {
+    transform: none;
+  }
+}
